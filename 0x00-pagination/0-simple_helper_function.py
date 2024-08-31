@@ -11,10 +11,10 @@ The function should return a tuple of size two containing a start index and an
 Page numbers are 1-indexed, i.e. the first page is page 1.
 """
 
-from typing import List
+from typing import Tuple
 
 
-def index_range(page: int, page_size: int) -> tuple[int, ...]:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     Function caculates start and end indexes for pagination
 
@@ -23,14 +23,12 @@ def index_range(page: int, page_size: int) -> tuple[int, ...]:
         page_size (int): Size of each paginated page
 
     Returns:
-        tuple[int, ...]: tuple containing start and end indexes for pagination
+        Tuple[int, int]: tuple containing start and end indexes for pagination
     """
-    pagination_ranges: List[int] = []
-
     # Start index for pagination
-    pagination_ranges.append((page - 1) * page_size)
+    start_idx = (page - 1) * page_size
 
     # End index for pagination
-    pagination_ranges.append((page) * page_size)
+    end_idx = page * page_size
 
-    return tuple(pagination_ranges)
+    return start_idx, end_idx
